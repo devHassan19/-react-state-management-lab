@@ -1,11 +1,12 @@
 import './App.css'
 import { useState } from 'react'
+// import zombieFighters from './zombieFighters'
 
 const App = () => {
   const [team, setTeam] = useState([])
   const [money, setMoney] = useState(100)
-  const [zombieFighters, setZombieFighters] = useState(
-    {
+  const [zombieFighters, setZombieFighters] = useState([
+    ({
       name: 'Survivor',
       price: 12,
       strength: 6,
@@ -74,15 +75,21 @@ const App = () => {
       strength: 7,
       agility: 6,
       img: 'https://via.placeholder.com/150/602b9e'
-    }
-  )
-
+    })
+  ])
   return (
-    <ul>
-      {zombieFighters.map((zombie) => (
-        <li>{zombie.name}</li>
+    <>
+      {zombieFighters.map((zombie, index) => (
+        <li>
+          <img src={zombie.img} alt="" />
+          <h3>{zombie.name}</h3>
+          <p>Price: {zombie.price}</p>
+          <p>Strength: {zombie.strength}</p>
+          <p>Agility: {zombie.agility} </p>
+          <button type="submit">Add</button>
+        </li>
       ))}
-    </ul>
+    </>
   )
 }
 
