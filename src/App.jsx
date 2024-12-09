@@ -6,7 +6,7 @@ const App = () => {
   const [team, setTeam] = useState([])
   const [money, setMoney] = useState(100)
   const [zombieFighters, setZombieFighters] = useState([
-    ({
+    {
       name: 'Survivor',
       price: 12,
       strength: 6,
@@ -75,20 +75,50 @@ const App = () => {
       strength: 7,
       agility: 6,
       img: 'https://via.placeholder.com/150/602b9e'
-    })
+    }
   ])
+
+  const [strength, setStrength] = useState(0)
+  const [agility, setAgility] = useState(0)
+
   return (
     <>
-      {zombieFighters.map((zombie, index) => (
-        <li>
-          <img src={zombie.img} alt="" />
-          <h3>{zombie.name}</h3>
-          <p>Price: {zombie.price}</p>
-          <p>Strength: {zombie.strength}</p>
-          <p>Agility: {zombie.agility} </p>
-          <button type="submit">Add</button>
-        </li>
-      ))}
+      <h1>Zombie Fighters</h1>
+      <h2>Money {money}</h2>
+      <h2>Money {strength}</h2>
+      <h2>Money {agility}</h2>
+      <div>
+        <h1>Teams</h1>
+        <ul>
+          {team.map((zombie, index) => (
+            <li id={index}>
+              <img src={zombie.img} alt="" />
+              <h3>{zombie.name}</h3>
+              <p>Price: {zombie.price}</p>
+              <p>Strength: {zombie.strength}</p>
+              <p>Agility: {zombie.agility} </p>
+              <button id={index} type="submit">
+                Add
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <h1>Fighters</h1>
+      <ul>
+        {zombieFighters.map((zombie, index) => (
+          <li id={index}>
+            <img src={zombie.img} alt="" />
+            <h3>{zombie.name}</h3>
+            <p>Price: {zombie.price}</p>
+            <p>Strength: {zombie.strength}</p>
+            <p>Agility: {zombie.agility} </p>
+            <button id={index} type="submit">
+              Add
+            </button>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }
