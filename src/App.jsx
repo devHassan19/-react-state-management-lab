@@ -81,12 +81,18 @@ const App = () => {
   const [strength, setStrength] = useState(0)
   const [agility, setAgility] = useState(0)
 
+  const handleAddFighter = (event) => {
+    const newTeam = { ...team, zombie }
+    setTeam(newTeam)
+  }
+
+  const handleRemoveFighter = (event) => {}
   return (
     <>
       <h1>Zombie Fighters</h1>
-      <h2>Money {money}</h2>
-      <h2>Money {strength}</h2>
-      <h2>Money {agility}</h2>
+      <h2>Money: {money}</h2>
+      <h2>Team Strength: {strength}</h2>
+      <h2>Team Agility: {agility}</h2>
       <div>
         <h1>Teams</h1>
         <ul>
@@ -97,8 +103,8 @@ const App = () => {
               <p>Price: {zombie.price}</p>
               <p>Strength: {zombie.strength}</p>
               <p>Agility: {zombie.agility} </p>
-              <button id={index} type="submit">
-                Add
+              <button id={index} onClick={handleRemoveFighter}>
+                Remove
               </button>
             </li>
           ))}
@@ -113,7 +119,7 @@ const App = () => {
             <p>Price: {zombie.price}</p>
             <p>Strength: {zombie.strength}</p>
             <p>Agility: {zombie.agility} </p>
-            <button id={index} type="submit">
+            <button id={index} onClick={handleAddFighter}>
               Add
             </button>
           </li>
