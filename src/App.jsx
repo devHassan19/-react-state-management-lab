@@ -81,12 +81,30 @@ const App = () => {
   const [strength, setStrength] = useState(0)
   const [agility, setAgility] = useState(0)
 
-  const handleAddFighter = (event) => {
-    const newTeam = { ...team, zombie }
-    setTeam(newTeam)
+  const handleAddFighter = (e) => {
+    const index = parseInt(e.target.id)
+    const theZombie = zombieFighters[index]
+
+    if (money >= theZombie.price) {
+      setTeam([...team, theZombie])
+      setMoney(money - theZombie.price)
+      setStrength(strength + theZombie.strength)
+      setAgility(agility + theZombie.agility)
+      setZombieFighters(theZombie.filter((_, i) => i !== index))
+    } else {
+      console.log('Not enough money')
+    }
   }
 
-  const handleRemoveFighter = (event) => {}
+  const handleRemoveFighter = (e) => {
+    const index = parseInt(e.target.id)
+    const theZombie = team[index]
+    setTeam(team.filter((_, i) => i !== index))
+    setMoney(money + theZombie.price)
+    setStrength(strength - theZombie.strength)
+    setAgility(agility - theZombie.agility)
+    setZombieFighters([...zombieFighters, theZombie])
+  }
   return (
     <>
       <h1>Zombie Fighters</h1>
